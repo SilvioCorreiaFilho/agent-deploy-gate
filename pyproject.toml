@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "agent-deploy-gate"
+version = "1.0.0"
+description = "Deterministic deploy gate for agent workloads: snapshot, invariants, verify, rollback, audit."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+keywords = ["agents", "llm", "deployment", "rollback", "audit", "devops", "ai-infrastructure"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "License :: OSI Approved :: MIT License",
+  "Topic :: System :: Systems Administration",
+  "Intended Audience :: Developers",
+]
+dependencies = []          # stdlib only, on purpose
+
+[project.optional-dependencies]
+test = ["pytest>=7"]
+
+[project.scripts]
+agent-deploy-gate = "agent_deploy_gate.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/SilvioCorreiaFilho/agent-deploy-gate"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+addopts = "-q"
